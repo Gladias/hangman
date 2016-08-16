@@ -1,6 +1,7 @@
 package com.mygdx.hangman;
 
 import com.badlogic.gdx.Game;
+import com.mygdx.hangman.entities.Categories;
 import com.mygdx.hangman.screens.SplashScreen;
 
 public class HangmanGame extends Game {
@@ -12,6 +13,10 @@ public class HangmanGame extends Game {
 	
 	private boolean paused;
 	
+	public void print(){
+		System.out.println(Categories.animals());
+	}
+
 	
 	@Override
 	public void create () {

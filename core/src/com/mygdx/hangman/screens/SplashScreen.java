@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.hangman.HangmanGame;
+import com.mygdx.hangman.entities.Categories;
 
 public class SplashScreen extends AbstractScreen {
 
@@ -16,6 +17,7 @@ public class SplashScreen extends AbstractScreen {
 			
 			@Override
 			public void run() {
+				System.out.println(Categories.animals());
 				game.setScreen(new GameplayScreen(game));
 			}
 		}, 1);
@@ -24,7 +26,7 @@ public class SplashScreen extends AbstractScreen {
 
 	public void init() {
 		// TO DO
-		splashImg = new Texture("badlogic.jpg");
+		splashImg = new Texture("background.png");
 	}
 	
 	@Override
