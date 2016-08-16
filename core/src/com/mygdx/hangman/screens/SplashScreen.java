@@ -5,28 +5,24 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.hangman.HangmanGame;
 
-import sun.misc.Timeable;
-
 public class SplashScreen extends AbstractScreen {
 
 	private Texture splashImg;
 	
-	public SplashScreen(HangmanGame game) {
+	public SplashScreen(final HangmanGame game) {
 		super(game);
-		init();
 		
 		Timer.schedule(new Task() {
 			
 			@Override
 			public void run() {
-				System.out.println("1sek");
-				
+				game.setScreen(new GameplayScreen(game));
 			}
 		}, 1);
 		
 	}
 
-	private void init() {
+	public void init() {
 		// TO DO
 		splashImg = new Texture("badlogic.jpg");
 	}

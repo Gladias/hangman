@@ -23,6 +23,7 @@ public abstract class AbstractScreen implements Screen {
 		stage = new Stage(new StretchViewport(HangmanGame.WIDTH, HangmanGame.HEIGHT, camera));
 		spriteBatch = new SpriteBatch();
 		Gdx.input.setInputProcessor(stage);
+		init();
 	}
 
 	private void createCamera() {
@@ -61,5 +62,7 @@ public abstract class AbstractScreen implements Screen {
 	}
 	
 	public void resize(int width, int height) {};
+	
+	public void init(){};
 }
  

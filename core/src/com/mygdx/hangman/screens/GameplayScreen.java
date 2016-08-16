@@ -6,12 +6,6 @@ public class GameplayScreen extends AbstractScreen{
 
 	public GameplayScreen(HangmanGame game) {
 		super(game);
-		init();
 	}
-
-	private void init() {
-		
-	}
-	
 }
 
