@@ -1,5 +1,17 @@
 package com.mygdx.hangman.screens;
 
-public class GameplayScreen {
+import com.mygdx.hangman.HangmanGame;
 
+public class GameplayScreen extends AbstractScreen{
+
+	public GameplayScreen(HangmanGame game) {
+		super(game);
+		init();
+	}
+
+	private void init() {
+		
+	}
+	
 }
+
