@@ -20,7 +20,7 @@ public class SplashScreen extends AbstractScreen {
 				System.out.println(Categories.animals());
 				game.setScreen(new GameplayScreen(game));
 			}
-		}, 1);
+		}, 5);
 		
 	}
 
