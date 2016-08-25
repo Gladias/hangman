@@ -20,7 +20,7 @@ public class GameplayScreen extends AbstractScreen {
 	protected void init() {
 
 		length = word.length();
-		System.out.println(length);
+		System.out.println(word);
 
 		starting_x = ChooseCategory.STARTING_X_2;
 		starting_y = ChooseCategory.STARTING_Y_2;
@@ -62,9 +62,7 @@ public class GameplayScreen extends AbstractScreen {
 
 	}
 
-	private void IncreaseX() {
-		starting_x += 70;
-	}
+	private void IncreaseX() {starting_x += 70;}
 
 	private void showBars() {
 
