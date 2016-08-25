@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class ChooseCategory extends Image{
 	
-	private final static int WIDTH = 318;
-	private final static int HEIGHT = 119;
+	public final static int WIDTH = 318;
+	public final static int HEIGHT = 119;
 	
 	public final static int STARTING_X_1 = 29;
 	public final static int STARTING_Y_1 = 310;

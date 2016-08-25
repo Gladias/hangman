@@ -63,6 +63,6 @@ public abstract class AbstractScreen implements Screen {
 	
 	public void resize(int width, int height) {};
 	
-	public void init(){};
+	protected abstract void init();
 }
  

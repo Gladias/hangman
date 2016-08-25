@@ -18,13 +18,13 @@ public class SplashScreen extends AbstractScreen {
 			@Override
 			public void run() {
 				System.out.println(Categories.animals());
-				game.setScreen(new GameplayScreen(game));
+				game.setScreen(new MenuScreen(game));
 			}
 		}, 1);
 		
 	}
 
-	public void init() {
+	protected void init() {
 		// TO DO
 		splashImg = new Texture("background.png");
 	}
