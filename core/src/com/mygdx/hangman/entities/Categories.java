@@ -6,10 +6,10 @@ public class Categories {
 
 	public static String animals(){
 		
-		String[] animals = {"Kameleon","Hipopotam","Wieloryb","Jaszczurka","Ropucha"};
+		String[] animals = {"Kameleon","Hipopotam","Wieloryb","Ropucha"};
 		
 		Random generator = new Random();
-		int result = generator.nextInt(5);
+		int result = generator.nextInt(4);
 		
 		return animals[result];
 	}
@@ -17,10 +17,10 @@ public class Categories {
 	
     public static String countries(){
 		
-		String[] countries = {"Afganistan","Mongolia","Argentyna","Portugalia","Rumunia"};
+		String[] countries = {"Mongolia","Argentyna","Rumunia"};
 		
 		Random generator = new Random();
-		int result = generator.nextInt(5);
+		int result = generator.nextInt(3);
 		
 		return countries[result];
 	}
@@ -28,20 +28,20 @@ public class Categories {
      
     public static String profession(){
  		
- 		String[] profession = {"Polityk","Programista","Listonosz","Ratownik","Nauczyciel"};
+ 		String[] profession = {"Polityk","Listonosz","Ratownik"};
  		
  		Random generator = new Random();
- 		int result = generator.nextInt(5);
+ 		int result = generator.nextInt(3);
  		
  		return profession[result];
  	}
      
     public static String name(){
   		
-  		String[] name = {"Agnieszka","Aleksander","Mateusz","Wojciech","Henryk"};
+  		String[] name = {"Agnieszka","Mateusz","Wojciech","Henryk"};
   		
   		Random generator = new Random();
-  		int result = generator.nextInt(5);
+  		int result = generator.nextInt(4);
   		
   		return name[result];
   	} 

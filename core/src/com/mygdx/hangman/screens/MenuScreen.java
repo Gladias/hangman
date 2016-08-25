@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.hangman.HangmanGame;
+import com.mygdx.hangman.entities.Categories;
 import com.mygdx.hangman.entities.ChooseCategory;
 
 public class MenuScreen extends AbstractScreen {
@@ -33,7 +34,7 @@ public class MenuScreen extends AbstractScreen {
 		stage.addActor(button4);
 	}
 	
-private void initButton() {
+    private void initButton() {
 	
 		first = new Button(new ButtonStyle());
 		second = new Button(new ButtonStyle());
@@ -79,7 +80,44 @@ private void initButton() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				
-				System.out.println("CLICK");
+				GameplayScreen.word = Categories.countries();
+				game.setScreen(new GameplayScreen(game));
+				
+				return super.touchDown(event, x, y, pointer, button);
+			}
+		});
+		
+		second.addListener(new ClickListener(){
+			
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				
+				GameplayScreen.word = Categories.name();
+				game.setScreen(new GameplayScreen(game));
+				
+				return super.touchDown(event, x, y, pointer, button);
+			}
+		});
+		
+		third.addListener(new ClickListener(){
+			
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				
+				GameplayScreen.word = Categories.profession();
+				game.setScreen(new GameplayScreen(game));
+				
+				return super.touchDown(event, x, y, pointer, button);
+			}
+		});
+		
+		fourth.addListener(new ClickListener(){
+			
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				
+				GameplayScreen.word = Categories.animals();
+				game.setScreen(new GameplayScreen(game));
 				
 				return super.touchDown(event, x, y, pointer, button);
 			}
