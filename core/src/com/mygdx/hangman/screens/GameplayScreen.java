@@ -1,15 +1,23 @@
 package com.mygdx.hangman.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.mygdx.hangman.HangmanGame;
 import com.mygdx.hangman.entities.ChooseCategory;
+import com.mygdx.hangman.entities.UserInput;
 
 public class GameplayScreen extends AbstractScreen {
 
 	public final static int BAR_HEIGHT = 5, BAR_WIDTH = 56;
 	private int starting_x, starting_y;
-	static String word;
-	private int length;
+	public static String word;
+	public static int length;
 	private ChooseCategory bar1, bar2, bar3, bar4, bar5, bar6, bar7, bar8, bar9;
+	private BitmapFont letter1, letter2, letter3, 
+	                   letter4, letter5, letter6, 
+	                   letter7, letter8, letter9;
+	UserInput InputProcessor;
 
 	public GameplayScreen(HangmanGame game) {
 		super(game);
@@ -20,34 +28,54 @@ public class GameplayScreen extends AbstractScreen {
 	protected void init() {
 
 		length = word.length();
-		System.out.println(word);
+
+		UserInput InputProcessor = new UserInput();
+		Gdx.input.setInputProcessor(InputProcessor);
 
 		starting_x = ChooseCategory.STARTING_X_2;
 		starting_y = ChooseCategory.STARTING_Y_2;
 
 		initBars();
+		
+		initLetters();
 
 		showBars();
+
+	}
+
+	private void initLetters() {
+		letter1 = new BitmapFont();
+		letter2 = new BitmapFont();
+		letter3 = new BitmapFont();
+		letter4 = new BitmapFont();
+		letter5 = new BitmapFont();
+		letter6 = new BitmapFont();
+		letter7 = new BitmapFont();
+		letter8 = new BitmapFont();
+		letter9 = new BitmapFont();	
+		
+		letter1.setColor(Color.BLACK);
+		letter1.getData().setScale(2.3f);
 	}
 
 	private void initBars() {
 
 		bar1 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
-		IncreaseX();
+		increaseX();
 		bar2 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
-		IncreaseX();
+		increaseX();
 		bar3 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
-		IncreaseX();
+		increaseX();
 		bar4 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
-		IncreaseX();
+		increaseX();
 		bar5 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
-		IncreaseX();
+		increaseX();
 		bar6 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
-		IncreaseX();
+		increaseX();
 		bar7 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
-		IncreaseX();
+		increaseX();
 		bar8 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
-		IncreaseX();
+		increaseX();
 		bar9 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
 
 		bar1.setSize(BAR_WIDTH, BAR_HEIGHT);
@@ -62,7 +90,9 @@ public class GameplayScreen extends AbstractScreen {
 
 	}
 
-	private void IncreaseX() {starting_x += 70;}
+	private void increaseX() {
+		starting_x += 70;
+	}
 
 	private void showBars() {
 
@@ -106,6 +136,11 @@ public class GameplayScreen extends AbstractScreen {
 
 	}
 
+	public static String showLetter(char character) {
+		String result = Character.toString(character);
+		return result;
+	}
+
 	public void render(float delta) {
 		super.render(delta);
 		update();
@@ -113,6 +148,7 @@ public class GameplayScreen extends AbstractScreen {
 		spriteBatch.begin();
 
 		stage.draw();
+		letter1.draw(spriteBatch,"XD",280,440);
 
 		spriteBatch.end();
 	}
