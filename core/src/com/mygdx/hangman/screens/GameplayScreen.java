@@ -3,6 +3,8 @@ package com.mygdx.hangman.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.mygdx.hangman.HangmanGame;
 import com.mygdx.hangman.entities.ChooseCategory;
 import com.mygdx.hangman.entities.UserInput;
@@ -10,14 +12,23 @@ import com.mygdx.hangman.entities.UserInput;
 public class GameplayScreen extends AbstractScreen {
 
 	public final static int BAR_HEIGHT = 5, BAR_WIDTH = 56;
-	private int starting_x, starting_y;
+	private static int starting_x;
+	private int starting_y;
+	private static int letters_x;
+	private int letters_y;
 	public static String word;
 	public static int length;
 	private ChooseCategory bar1, bar2, bar3, bar4, bar5, bar6, bar7, bar8, bar9;
-	private BitmapFont letter1, letter2, letter3, 
-	                   letter4, letter5, letter6, 
-	                   letter7, letter8, letter9;
+	private SpriteBatch batch;
+	private static String result = "";
+
+
+	private static String[] tab_letters = new String[9];
+	private static int[] tab_positions = new int[9];
+
 	UserInput InputProcessor;
+
+	public BitmapFont font;
 
 	public GameplayScreen(HangmanGame game) {
 		super(game);
@@ -27,6 +38,14 @@ public class GameplayScreen extends AbstractScreen {
 	@Override
 	protected void init() {
 
+		for (int i = 0; i < 9; i++) {
+			tab_letters[i] = "";
+			tab_positions[i] = 0;
+
+		}
+
+		batch = new SpriteBatch();
+
 		length = word.length();
 
 		UserInput InputProcessor = new UserInput();
@@ -35,29 +54,26 @@ public class GameplayScreen extends AbstractScreen {
 		starting_x = ChooseCategory.STARTING_X_2;
 		starting_y = ChooseCategory.STARTING_Y_2;
 
+		letters_x = ChooseCategory.STARTING_X_2 + 5;
+		letters_y = ChooseCategory.STARTING_Y_2 + 60;
+
 		initBars();
-		
-		initLetters();
+
+		initFonts();
 
 		showBars();
 
 	}
 
-	private void initLetters() {
-		letter1 = new BitmapFont();
-		letter2 = new BitmapFont();
-		letter3 = new BitmapFont();
-		letter4 = new BitmapFont();
-		letter5 = new BitmapFont();
-		letter6 = new BitmapFont();
-		letter7 = new BitmapFont();
-		letter8 = new BitmapFont();
-		letter9 = new BitmapFont();	
-		
-		letter1.setColor(Color.BLACK);
-		letter1.getData().setScale(2.3f);
-	}
+	private void initFonts() {
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font.ttf"));
+		FreeTypeFontGenerator.FreeTypeFontParameter params = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
+		params.size = 60;
+		params.color = Color.BLACK;
+		font = generator.generateFont(params);
+
+	}
 	private void initBars() {
 
 		bar1 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
@@ -91,7 +107,7 @@ public class GameplayScreen extends AbstractScreen {
 	}
 
 	private void increaseX() {
-		starting_x += 70;
+		starting_x += 72;
 	}
 
 	private void showBars() {
@@ -136,8 +152,10 @@ public class GameplayScreen extends AbstractScreen {
 
 	}
 
-	public static String showLetter(char character) {
-		String result = Character.toString(character);
+	public static String passwordLetter(char character, int i) {
+		result = Character.toString(character);
+		tab_positions[i] = letters_x + (i * 73);
+		tab_letters[i] = result;
 		return result;
 	}
 
@@ -145,10 +163,25 @@ public class GameplayScreen extends AbstractScreen {
 		super.render(delta);
 		update();
 
+		batch.begin();
+
+		if (result != "") {
+			font.draw(batch, tab_letters[0], tab_positions[0], letters_y);
+			font.draw(batch, tab_letters[1], tab_positions[1], letters_y);
+			font.draw(batch, tab_letters[2], tab_positions[2], letters_y);
+			font.draw(batch, tab_letters[3], tab_positions[3], letters_y);
+			font.draw(batch, tab_letters[4], tab_positions[4], letters_y);
+			font.draw(batch, tab_letters[5], tab_positions[5], letters_y);
+			font.draw(batch, tab_letters[6], tab_positions[6], letters_y);
+			font.draw(batch, tab_letters[7], tab_positions[7], letters_y);
+			font.draw(batch, tab_letters[8], tab_positions[8], letters_y);
+		}
+
+		batch.end();
+
 		spriteBatch.begin();
 
 		stage.draw();
-		letter1.draw(spriteBatch,"XD",280,440);
 
 		spriteBatch.end();
 	}
@@ -157,4 +190,5 @@ public class GameplayScreen extends AbstractScreen {
 		stage.act();
 
 	}
+
 }

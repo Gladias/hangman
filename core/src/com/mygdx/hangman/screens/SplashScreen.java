@@ -23,7 +23,6 @@ public class SplashScreen extends AbstractScreen {
 	}
 
 	protected void init() {
-		// TO DO
 		splashImg = new Texture("background.png");
 	}
 	

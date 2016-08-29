@@ -20,8 +20,9 @@ public class UserInput implements InputProcessor {
 	public boolean keyTyped(char character) {
 
 		for (int i = 0; i < GameplayScreen.length; i++) {
-			if (character == GameplayScreen.word.charAt(i))
-				GameplayScreen.showLetter(character);
+			if (character == GameplayScreen.word.charAt(i)){
+				GameplayScreen.passwordLetter(character,i);
+			}
 		}
 
 		return false;
