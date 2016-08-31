@@ -5,11 +5,11 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.hangman.HangmanGame;
 
-public class SplashScreen extends AbstractScreen {
+public class StartScreen extends AbstractScreen {
 
 	private Texture splashImg;
 	
-	public SplashScreen(final HangmanGame game) {
+	public StartScreen(final HangmanGame game) {
 		super(game);
 		
 		Timer.schedule(new Task() {

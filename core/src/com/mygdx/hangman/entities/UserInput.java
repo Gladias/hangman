@@ -19,12 +19,21 @@ public class UserInput implements InputProcessor {
 	@Override
 	public boolean keyTyped(char character) {
 
+		boolean check = false;
+		
 		for (int i = 0; i < GameplayScreen.length; i++) {
-			if (character == GameplayScreen.word.charAt(i)){
-				GameplayScreen.passwordLetter(character,i);
+			if (character == GameplayScreen.word.charAt(i)) {
+				GameplayScreen.passwordLetter(character, i);
+				check = true;
+				GameplayScreen.counter++;
 			}
 		}
-
+		if (check != true)
+			GameplayScreen.userMistakes++;
+		
+		if(GameplayScreen.counter == GameplayScreen.length)
+			GameplayScreen.userMistakes=7; //go to case 7
+			
 		return false;
 	}
 

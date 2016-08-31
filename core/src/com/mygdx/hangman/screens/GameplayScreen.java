@@ -1,16 +1,21 @@
 package com.mygdx.hangman.screens;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.utils.Timer;
+import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.hangman.HangmanGame;
 import com.mygdx.hangman.entities.ChooseCategory;
 import com.mygdx.hangman.entities.UserInput;
 
 public class GameplayScreen extends AbstractScreen {
 
+	public static int counter = 0;
 	public final static int BAR_HEIGHT = 5, BAR_WIDTH = 56;
 	private static int starting_x;
 	private int starting_y;
@@ -19,9 +24,10 @@ public class GameplayScreen extends AbstractScreen {
 	public static String word;
 	public static int length;
 	private ChooseCategory bar1, bar2, bar3, bar4, bar5, bar6, bar7, bar8, bar9;
+	private Texture man1, man2, man3, man4, man5, man6;
 	private SpriteBatch batch;
 	private static String result = "";
-
+	public static int userMistakes = 0;
 
 	private static String[] tab_letters = new String[9];
 	private static int[] tab_positions = new int[9];
@@ -61,7 +67,20 @@ public class GameplayScreen extends AbstractScreen {
 
 		initFonts();
 
+		initHangman();
+
 		showBars();
+
+	}
+
+	private void initHangman() {
+
+		man1 = new Texture("man1.png");
+		man2 = new Texture("man2.png");
+		man3 = new Texture("man3.png");
+		man4 = new Texture("man4.png");
+		man5 = new Texture("man5.png");
+		man6 = new Texture("man6.png");
 
 	}
 
@@ -74,6 +93,7 @@ public class GameplayScreen extends AbstractScreen {
 		font = generator.generateFont(params);
 
 	}
+
 	private void initBars() {
 
 		bar1 = new ChooseCategory("BlackBar.png", starting_x, starting_y);
@@ -175,6 +195,35 @@ public class GameplayScreen extends AbstractScreen {
 			font.draw(batch, tab_letters[6], tab_positions[6], letters_y);
 			font.draw(batch, tab_letters[7], tab_positions[7], letters_y);
 			font.draw(batch, tab_letters[8], tab_positions[8], letters_y);
+		}
+
+		switch (userMistakes) {
+		case 1:
+			batch.draw(man1, 150, 200);
+			break;
+		case 2:
+			batch.draw(man2, 150, 200);
+			break;
+		case 3:
+			batch.draw(man3, 150, 200);
+			break;
+		case 4:
+			batch.draw(man4, 150, 200);
+			break;
+		case 5:
+			batch.draw(man5, 150, 200); 
+			break;
+		case 6:
+			batch.draw(man6, 150, 200);
+		case 7:
+			Timer.schedule(new Task() {
+				
+				@Override
+				public void run() {
+					game.setScreen(new FinishScreen(game));
+				}
+			}, 1);
+			break;
 		}
 
 		batch.end();

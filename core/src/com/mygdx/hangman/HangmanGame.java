@@ -1,7 +1,7 @@
 package com.mygdx.hangman;
 
 import com.badlogic.gdx.Game;
-import com.mygdx.hangman.screens.SplashScreen;
+import com.mygdx.hangman.screens.StartScreen;
 
 public class HangmanGame extends Game {
 	
@@ -14,7 +14,7 @@ public class HangmanGame extends Game {
 
 	@Override
 	public void create () {
-		this.setScreen(new SplashScreen(this));
+		this.setScreen(new StartScreen(this));
 	}
 
 
