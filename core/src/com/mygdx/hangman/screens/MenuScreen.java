@@ -61,25 +61,21 @@ public class MenuScreen extends AbstractScreen {
 		first.setHeight(ChooseCategory.HEIGHT);
 		first.setX(ChooseCategory.STARTING_X_1);
 		first.setY(ChooseCategory.STARTING_Y_1);
-		first.setDebug(true);
 
 		third.setWidth(ChooseCategory.WIDTH);
 		third.setHeight(ChooseCategory.HEIGHT);
 		third.setX(ChooseCategory.STARTING_X_2);
 		third.setY(ChooseCategory.STARTING_Y_2);
-		third.setDebug(true);
 
 		second.setWidth(ChooseCategory.WIDTH);
 		second.setHeight(ChooseCategory.HEIGHT);
 		second.setX(ChooseCategory.STARTING_X_3);
 		second.setY(ChooseCategory.STARTING_Y_3);
-		second.setDebug(true);
 
 		fourth.setWidth(ChooseCategory.WIDTH);
 		fourth.setHeight(ChooseCategory.HEIGHT);
 		fourth.setX(ChooseCategory.STARTING_X_4);
 		fourth.setY(ChooseCategory.STARTING_Y_4);
-		fourth.setDebug(true);
 
 		stage.addActor(first);
 		stage.addActor(second);

@@ -2,7 +2,6 @@ package com.mygdx.hangman.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -41,7 +40,7 @@ public class FinishScreen extends AbstractScreen {
 		
 		batch.begin();
 		
-		font.draw(batch,"xD",100,100);
+		font.draw(batch,"Koniec",275,550);
 		
 		batch.end();
 	} 
